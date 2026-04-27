@@ -31,6 +31,15 @@ def run():
         response = stub.ListAllEmployees(EmployeeService_pb2.EmptyMessage())
         print ('All employees: ' + str(response))
 
+        response = stub.GetEmployeeCount(EmployeeService_pb2.EmptyMessage())
+        print ('Employee count: ' + str(response))
+
+        response = stub.UpdateEmployeeName(EmployeeService_pb2.EmployeeNameUpdate(id=301, name='Jose Silva'))
+        print ('Updated employee name ' + response.status)
+
+        response = stub.ListEmployeesByTitle(EmployeeService_pb2.TitleQuery(title='Senior Programmer'))
+        print ('Employees by title: ' + str(response))
+
 if __name__ == '__main__':
     logging.basicConfig()
     run()
